@@ -1,12 +1,15 @@
-class Solution {
+class Solution
+{
 public:
-    string minWindow(string s, string t) {
-        unordered_map<string,int> map_substr;
+    string minWindow(string s, string t)
+    {
+        // Utilisation d'un map desordonnee pour garder toutes les sous chaines
+        unordered_map<string, int> map_substr;
         if (s.size() < t.size())
             return "";
-        if (s==t)
+        if (s == t)
             return s;
-        string copy , copy1 = s, sub_veri;
+        string copy, copy1 = s, sub_veri;
         reverse(copy1.begin(), copy1.end());
         int pos_strt, nb = 0, pos_cont;
         bool see_first = false;
@@ -30,20 +33,23 @@ public:
                     }
                     nb++;
                     if (copy.empty())
-                    map_substr[s.substr(pos_strt, nb)] = s.substr(pos_strt, nb).size() ;
+                        map_substr[s.substr(pos_strt, nb)] = s.substr(pos_strt, nb).size();
                 }
             }
             see_first = false;
         }
         string result;
         int min = 0;
-        for(auto mp : map_substr){
-            if(mp.second < min) {
-                 min = mp.second;
-                 result = mp.first;
+        for (auto mp : map_substr)
+        {
+            if (mp.second < min)
+            {
+                min = mp.second;
+                result = mp.first;
             }
         }
-        if(min) return result;
+        if (min)
+            return result;
         return "";
     }
 };
