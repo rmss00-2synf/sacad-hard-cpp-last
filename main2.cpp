@@ -52,4 +52,5 @@ public:
             return result;
         return "";
     }
+    // Demmain je terminerai avec ca, trop fatigue hhh
 };
